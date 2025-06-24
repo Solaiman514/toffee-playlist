@@ -1,0 +1,31 @@
+name: Generate M3U Playlist
+
+on:
+  push:
+  schedule:
+    - cron: '0 */6 * * *'  # প্রতি ৬ ঘণ্টায় একবার রান করবে
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
+
+    - name: Run Script
+      run: |
+        python generate_m3u.py
+
+    - name: Commit and Push Generated M3U
+      run: |
+        git config --global user.name "Auto M3U Bot"
+        git config --global user.email "m3ubot@example.com"
+        git add toffee_playlist.m3u
+        git commit -m "Auto-update M3U playlist"
+        git push
