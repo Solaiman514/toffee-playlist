@@ -1,0 +1,11 @@
+#EXTM3U
+#EXTINF:-1,name
+name
+#EXTINF:-1,owner
+owner
+#EXTINF:-1,channels_amount
+channels_amount
+#EXTINF:-1,updated_on
+updated_on
+#EXTINF:-1,channels
+channels
